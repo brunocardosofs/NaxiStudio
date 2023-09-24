@@ -13,6 +13,15 @@
   "tauri": {
     "allowlist": {
       "all": false,
+      "fs": {
+        "readFile": true,
+        "readDir": true,
+        "scope": ["**"]
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": ["**"]
+      },
       "shell": {
         "all": false,
         "open": true
@@ -42,7 +51,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "Naxistudio",
+        "title": "NaxiStudio Player",
         "width": 800,
         "height": 600,
         "minWidth": 800,

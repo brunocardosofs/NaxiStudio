@@ -1,46 +1,61 @@
 <!doctype html>
-<html lang="en">
+<html lang="br">
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
+    <title>NaxiStudio Player</title>
     <script type="module" src="/main.js" defer></script>
-    <style>
-      .logo.vanilla:hover {
-        filter: drop-shadow(0 0 2em #ffe21c);
-      }
-    </style>
   </head>
 
   <body>
-    <div class="container">
-      <h1>Welcome to Tauri!</h1>
-
-      <div class="row">
-        <a href="https://tauri.app" target="_blank">
-          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          target="_blank"
-        >
-          <img
-            src="/assets/javascript.svg"
-            class="logo vanilla"
-            alt="JavaScript logo"
-          />
-        </a>
+    <div id="main-player">
+      <div id="players">
+        <div class="player" id="0">
+          <audio class="audio-player" controls src="#"></audio>
+        </div>
+        <div class="player" id="1">
+          <audio class="audio-player" controls src="#"></audio>
+        </div>
+        <div class="player" id="2">
+          <audio class="audio-player" controls src="#"></audio>
+        </div>
       </div>
-
-      <p>Click on the Tauri logo to learn more about the framework</p>
-
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-
-      <p id="greet-msg"></p>
+      <div id="tools">
+          <input type="text" id="directory" name="directory" id="directory" placeholder="Pasta">
+      </div>
+      <div id="playlist">
+        <ul id="hours">
+          <li class="hour" id="h00">00</li>
+          <li class="hour" id="h01">01</li>
+          <li class="hour" id="h02">02</li>
+          <li class="hour">03</li>
+          <li class="hour">04</li>
+          <li class="hour">05</li>
+          <li class="hour">06</li>
+          <li class="hour">07</li>
+          <li class="hour">08</li>
+          <li class="hour">09</li>
+          <li class="hour">10</li>
+          <li>11</li>
+          <li>12</li>
+          <li>13</li>
+          <li>14</li>
+          <li>15</li>
+          <li>16</li>
+          <li>17</li>
+          <li>18</li>
+          <li>19</li>
+          <li>20</li>
+          <li>21</li>
+          <li>22</li>
+          <li>23</li>
+        </ul>
+        <ul id="list"></ul>
+      </div>
     </div>
+    <div id="comp"></div>
+
+    <script type="module" src="./scripts/click.js"></script>
   </body>
 </html>
