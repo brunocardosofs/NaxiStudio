@@ -9,6 +9,7 @@ export default async function loadFolders(pathDatabase){
 
     vinheta.innerHTML = "<li class='title-collection'>Vinhetas</li>"
     music.innerHTML = "<li class='title-collection'>Músicas</li>"
+    collection.innerHTML = ""
 
     const folders = JSON.parse(await readTextFile(pathDatabase + '/folders.json'));
 

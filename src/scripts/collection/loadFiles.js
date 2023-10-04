@@ -8,8 +8,7 @@ function getFileExtension(filename) {
 }
 
 export default async function loadFiles(title, path){
-    collection.innerHTML = `<li>${title}</li>`;
-    console.log("title:", title, "path:", path)
+    collection.innerHTML = `<li class='load-folders'>${title}</li>`
 
     const entries = await readDir(path)
 
