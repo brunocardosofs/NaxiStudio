@@ -46,9 +46,32 @@ body{
   box-sizing: border-box;
 }
 
-#comp{
+#right-panel{
   width: calc(40% - 30px);
   height: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#commercial{
+  width: 100%;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: var(--main-dark-color-2);
+}
+
+#tools-right{
+  width: 100%;
+  height: calc(100% - 250px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -85,8 +108,9 @@ audio{
   width: 100%;
 }
 
-.load-audio{
+.load-audio .player{
   cursor: grabbing;
+  background-color: #6c0000;
 }
 
 #tools{
