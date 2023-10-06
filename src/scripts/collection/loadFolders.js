@@ -11,7 +11,7 @@ export default async function loadFolders(pathDatabase){
     music.innerHTML = "<li class='title-collection'>Músicas</li>"
     collection.innerHTML = ""
 
-    const folders = JSON.parse(await readTextFile(pathDatabase + '/folders.json'));
+    const folders = JSON.parse(await readTextFile(pathDatabase + '/collection/folders.json'));
 
     folders.forEach((element) => {
         file = document.createElement("li")
