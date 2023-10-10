@@ -28,7 +28,8 @@ document.onclick = (e) => {
                 title: "NaxiStudio Config",
                 url: '../windows/config/index.html',
                 minWidth: 800,
-                minHeight: 600
+                minHeight: 600,
+                center: true
             })
             break
     }
