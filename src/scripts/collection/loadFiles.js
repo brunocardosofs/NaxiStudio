@@ -11,9 +11,10 @@ export default async function loadFiles(title, path){
     collection.innerHTML = `<li class='load-folders'>${title}</li>`
 
     const entries = await readDir(path)
+    console.log(entries.length)
 
     entries.forEach((e) => {
-        if(getFileExtension(e.path) == ("mp3" || "aac" || "opus")){
+        if(getFileExtension(e.path) == ("mp3" || "aac" || "opus" || "wav")){
             file = document.createElement("li")
             file.innerText = e.name
             file.setAttribute("local", e.path)

@@ -1,4 +1,4 @@
-const { readTextFile, writeTextFile, exists } = window.__TAURI__.fs;
+const { writeTextFile, exists, createDir } = window.__TAURI__.fs;
 const { open } = window.__TAURI__.dialog;
 
 export default async function configDatabase(){
@@ -9,14 +9,26 @@ export default async function configDatabase(){
     
     if(dirDatabase != null){
         var configFile = dirDatabase + "/config/app.json"
-    
-        switch (await exists(configFile)){
-            case true:
-                //console.log(JSON.parse(await readTextFile(configFile)))
-                break
-            case false:
+        var foldersFile = dirDatabase + "/collection/folders.json"
+
+        if(!(await exists(configFile))){
+            try{
+                await createDir(dirDatabase + "/config")
+            }catch(e){
+                console.log(e)
+            }finally{
                 await writeTextFile(configFile, '{}');
-                break
+            }
+        }
+
+        if(!(await exists(foldersFile))){
+            try{
+                await createDir(dirDatabase + "/collection");
+            }catch(e){
+                console.log(e)
+            }finally{
+                await writeTextFile(foldersFile, '[]');
+            }
         }
     }
 
