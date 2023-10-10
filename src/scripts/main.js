@@ -27,6 +27,8 @@ document.onclick = (e) => {
             const webview = new WebviewWindow('NaxiStudioConfig', {
                 title: "NaxiStudio Config",
                 url: '../windows/config/index.html',
+                minWidth: 800,
+                minHeight: 600
             })
             break
     }
