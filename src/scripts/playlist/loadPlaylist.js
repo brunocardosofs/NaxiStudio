@@ -1,28 +1,56 @@
-const { readDir, readFile, BaseDirectory } = window.__TAURI__.fs;
+const { readDir, readTextFile, writeTextFile } = window.__TAURI__.fs;
 
 var playlist = document.getElementById("list")
-var liPlaylist
+var file
 
-function getFileExtension1(filename) {
-    return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+var dir = localStorage.getItem("database-path")
+var grid = JSON.parse(await readTextFile(dir + "/musical/grid/standard.json"))
+
+var title;
+var path;
+
+export async function loadPlaylist(){
+    playlist.innerHTML = "";
+    grid["00"].forEach((e, i) => {
+        file = document.createElement("li")
+        file.innerText = e[0]
+        file.setAttribute("title", e[0])
+        file.setAttribute("local", e[1])
+        file.setAttribute("indice", i)
+        file.classList.toggle("item-playlist", true)
+        playlist.append(file)
+    });
 }
 
-export default async function loadPlaylist(dir, func){
-    const entries = await readDir(dir, {
-        dir: BaseDirectory.App,
-        recursive: true
+export async function addPlaylist(n){
+    localStorage.setItem("tempFunc", 0)
+    title = localStorage.getItem("tempTitle")
+    path = localStorage.getItem("tempPath")
+    var exist = false;
+    let existI;
+
+    grid["00"].forEach((e, i) => {
+        if(path == e[1]){
+            exist = true
+            existI = i
+        }
     });
 
-    if(func == "h01"){playlist.innerHTML = ""};
+    if(exist) grid["00"].splice(existI, 1)
 
-    for(var i=0;i<entries.length;i++){
-        if(getFileExtension1(entries[i].path) == "mp3"){
-            liPlaylist = document.createElement("li");
-            liPlaylist.innerHTML = entries[i].name
-            liPlaylist.setAttribute("local", entries[i].path)
-            liPlaylist.setAttribute("title", entries[i].name)
-            liPlaylist.classList.add("item-list")
-            playlist.append(liPlaylist)
-        }
+    if(n >= 0){
+        grid["00"].splice(n, 0, [title, path])
+    }else if(exist){
+        grid["00"].splice(existI, 0, [title, path])
+    }else{
+        grid["00"].push([title, path])
     }
+
+    loadPlaylist()
+    //console.log(grid)
+}
+
+export async function savePlaylist(){
+    await writeTextFile(dir + "/musical/grid/standard.json", JSON.stringify(grid))
+    console.log("Salvo")
 }

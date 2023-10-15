@@ -1,4 +1,4 @@
-const { readTextFile, BaseDirectory } = window.__TAURI__.fs;
+const { readTextFile } = window.__TAURI__.fs;
 
 var collection = document.getElementById("collection")
 
