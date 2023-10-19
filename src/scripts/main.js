@@ -5,7 +5,7 @@ import loadMedia from "./playlist/loadMedia.js";
 import loadPlayer from "./playlist/loadPlayer.js";
 import loadFolders from "./collection/loadFolders.js"
 import loadFiles from "./collection/loadFiles.js";
-import { loadPlaylist, addPlaylist, savePlaylist } from "./playlist/loadPlaylist.js";
+import { loadPlaylist, addPlaylist, removePlaylist, savePlaylist } from "./playlist/loadPlaylist.js";
 
 var pathDatabase = localStorage.getItem("database-path")
 
@@ -53,13 +53,22 @@ document.onclick = (e) => {
     }
 }
 
+document.oncontextmenu = (e) => {
+    e.preventDefault();
+
+    switch(e.target.className){
+        case 'item-playlist':
+            removePlaylist(parseInt(e.target.getAttribute("indice")))
+    }
+}
+
 loadFolders(pathDatabase)
 
-loadPlaylist(pathDatabase)
+loadPlaylist()
 
 
 await unregisterAll();
 
-// await register('F3', () => {
-//     console.log('Shortcut triggered');
+// await register('F1', (e) => {
+//     console.log('Shortcut triggered', e);
 // });

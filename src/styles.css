@@ -145,6 +145,26 @@ audio{
   background-color: var(--main-dark-color-1);
 }
 
+#playlist-area{
+  width: calc(100% - 20px);
+  height: calc(100% - 75px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#playlist-tools{
+  width: 45px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-dark-color-2);
+  border-radius: 10px;
+}
+
 #playlist #hours{
   display: flex;
   flex-direction: row;
@@ -170,8 +190,8 @@ audio{
 }
 
 #playlist #list{
-  width: calc(100% - 20px);
-  height: calc(100% - 75px);
+  width: calc(100% - 55px);
+  height: 100%;
   background-color: var(--main-dark-color-2);
   border-radius: 10px;
   padding: 10px;

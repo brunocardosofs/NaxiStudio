@@ -50,6 +50,11 @@ export async function addPlaylist(n){
     //console.log(grid)
 }
 
+export async function removePlaylist(n){
+    grid["00"].splice(n, 1)
+    loadPlaylist()
+}
+
 export async function savePlaylist(){
     await writeTextFile(dir + "/musical/grid/standard.json", JSON.stringify(grid))
     console.log("Salvo")
