@@ -58,7 +58,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     background-color: var(--main-dark-color-2);
     padding: 10px;
   }

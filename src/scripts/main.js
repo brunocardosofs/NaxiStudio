@@ -1,5 +1,5 @@
 const { WebviewWindow  } = window.__TAURI__.window;
-const { register, unregisterAll } = window.__TAURI__.globalShortcut;
+const { register, registerAll, unregisterAll } = window.__TAURI__.globalShortcut;
 
 import loadMedia from "./playlist/loadMedia.js";
 import loadPlayer from "./playlist/loadPlayer.js";
@@ -54,10 +54,9 @@ document.onclick = (e) => {
 }
 
 document.oncontextmenu = (e) => {
-    e.preventDefault();
-
     switch(e.target.className){
         case 'item-playlist':
+            e.preventDefault();
             removePlaylist(parseInt(e.target.getAttribute("indice")))
     }
 }
@@ -67,8 +66,12 @@ loadFolders(pathDatabase)
 loadPlaylist()
 
 
-await unregisterAll();
+// await unregisterAll();
 
-// await register('F1', (e) => {
+// await register('F12', (e) => {
 //     console.log('Shortcut triggered', e);
+// });
+
+// await registerAll(['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11'], (e) => {
+//     console.log(`Shortcut ${e} triggered`);
 // });
