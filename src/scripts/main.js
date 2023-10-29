@@ -2,12 +2,14 @@ const { WebviewWindow  } = window.__TAURI__.window;
 const { register, registerAll, unregisterAll } = window.__TAURI__.globalShortcut;
 
 import loadMedia from "./playlist/loadMedia.js";
-import loadPlayer from "./playlist/loadPlayer.js";
+import { loadPlayer, pausePlayer, playPlayer, stopPlayer } from "./playlist/funcsPlayer.js";
 import loadFolders from "./collection/loadFolders.js"
 import loadFiles from "./collection/loadFiles.js";
 import { loadPlaylist, addPlaylist, removePlaylist, savePlaylist } from "./playlist/loadPlaylist.js";
+import Player from "./components/Player.js";
 
 var pathDatabase = localStorage.getItem("database-path")
+var players = document.getElementById("players")
 
 document.onclick = (e) => {
     switch(e.target.className){
@@ -24,11 +26,20 @@ document.onclick = (e) => {
         case 'load-folders':
             loadFolders(pathDatabase)
             break
-        case 'player':
+        case 'overlay':
             if(localStorage.getItem("tempFunc") == 1){
-                loadPlayer(parseInt(e.target.getAttribute("id")))
+                loadPlayer(e.target.getAttribute("player"))
                 addPlaylist(-1)
             }
+            break
+        case 'btn-player btn-play':
+            playPlayer(e.target.getAttribute("player"))
+            break
+        case 'btn-player btn-pause':
+            pausePlayer(e.target.getAttribute("player"))
+            break
+        case 'btn-player btn-stop':
+            stopPlayer(e.target.getAttribute("player"))
             break
         case 'grid':
             if(localStorage.getItem("tempFunc") == 1){
@@ -38,7 +49,7 @@ document.onclick = (e) => {
         case 'file-collection':
             loadFiles(e.target.innerHTML, e.target.getAttribute("path"))
             break
-        case 'open-config':
+        case 'btn-tools open-config':
             const webview = new WebviewWindow('NaxiStudioConfig', {
                 title: "NaxiStudio Config",
                 url: '../windows/config/index.html',
@@ -47,7 +58,7 @@ document.onclick = (e) => {
                 center: true
             })
             break
-        case 'save-playlist':
+        case 'btn-tools save-playlist':
             savePlaylist()
             break
     }
@@ -64,6 +75,12 @@ document.oncontextmenu = (e) => {
 loadFolders(pathDatabase)
 
 loadPlaylist()
+
+players.innerHTML = `
+    ${Player(0)}
+    ${Player(1)}
+    ${Player(2)}
+`
 
 
 // await unregisterAll();

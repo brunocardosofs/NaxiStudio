@@ -12,18 +12,31 @@
     <div id="main-player">
       <div id="players">
         <div class="player" id="0">
-          <audio class="audio-player" id="audiotag0" controls src="#"></audio>
-        </div>
-        <div class="player" id="1">
-          <audio class="audio-player" id="audiotag1" controls src="#"></audio>
-        </div>
-        <div class="player" id="2">
-          <audio class="audio-player" id="audiotag2" controls src="#"></audio>
+          <div class="controls-player 0">
+            <button class="btn-player btn-play 0"></button>
+            <button class="btn-player btn-pause 0"></button>
+            <button class="btn-player btn-stop 0"></button>
+          </div>
+          <div class="infos-player">
+            <span class="title-player">Título</span>
+            <span class="time-bar">bar</span>
+            <div class="times-player">
+              <span class="total-time">00:00</span>
+              <span class="time-left">00:00</span>
+            </div>
+          </div>
+          <audio class="audio-player" id="audiotag0" src="#"></audio>
         </div>
       </div>
       <div id="tools">
-          <div class="open-config">Configurações</div>
-          <div class="save-playlist">Salvar</div>
+        <div class="tools-content">
+          <i class="btn-tools open-config"></i>
+          <i class="btn-tools save-playlist"></i>
+        </div>
+        <div class="tools-content">
+          <div class="calendar"><i class="open-calendar"></i>00/00/0000</div>
+          <div class="clock">00/00/0000 00:00:00</div>
+        </div>
       </div>
       <div id="playlist">
         <ul id="hours">

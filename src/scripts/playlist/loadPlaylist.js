@@ -20,6 +20,7 @@ export async function loadPlaylist(){
         file.classList.toggle("item-playlist", true)
         playlist.append(file)
     });
+    players.classList.toggle("load-audio", false)
 }
 
 export async function addPlaylist(n){
