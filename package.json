@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/brunocardosofs/NaxiStudio/issues"
   },
-  "homepage": "https://github.com/brunocardosofs/NaxiStudio#readme"
+  "homepage": "https://github.com/brunocardosofs/NaxiStudio#readme",
+  "devDependencies": {
+    "electron": "^27.0.3"
+  }
 }
