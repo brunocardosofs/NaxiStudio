@@ -8,13 +8,15 @@
 <body>
     <h1>Player</h1>
     <button id="open">Abrir</button>
+    <button onclick="window.api.files('loadFiles', 'C:/Arquivos/MEDIA/MÚSICAS/Pagode').then((res) => console.log(res))">Teste</button>
 
-    <script type="module">
+    <script>
         document.getElementById("open").addEventListener("click", () => {
-            window.api.invoke('openConfig')
+            window.api.invoke('openConfig', 4)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
         })
     </script>
+    <script type="module" src="./scripts/mainPlayer.js"></script>
 </body>
 </html>

@@ -11,13 +11,15 @@ window.addEventListener('DOMContentLoaded', () => {
     // }
 })
 
-contextBridge.exposeInMainWorld(
-    "api", {
-        invoke: (channel, data) => {
-            let validChannels = ["openConfig"]; // list of ipcMain.handle channels you want access in frontend to
-            if (validChannels.includes(channel)) {
-                return ipcRenderer.invoke(channel, data); 
-            }
-        },
+contextBridge.exposeInMainWorld("api", {
+    invoke: (channel, data) => {
+        let validChannels = ["openConfig"]; // list of ipcMain.handle channels you want access in frontend to
+        if (validChannels.includes(channel)) {
+            return ipcRenderer.invoke(channel, data);
+        }
+    },
+
+    files: async (channel, dir) => {
+        return ipcRenderer.invoke(channel, dir)
     }
-);
+});

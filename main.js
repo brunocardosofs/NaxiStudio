@@ -1,12 +1,13 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron")
-const path = require("path"); 
+const path = require("node:path");
+const fs = require("fs").promises
 
 var mainWindow
 
 // Create Window
 async function createWindow(){
     mainWindow = new BrowserWindow({
-        width:800,
+        width:1000,
         height:600,
         minWidth:800,
         minHeight:600,
@@ -15,7 +16,7 @@ async function createWindow(){
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
-            enableRemoteModule: false,
+            enableRemoteModule: true,
             preload: path.join(__dirname, "./preload.js")
         }
     })
@@ -35,6 +36,12 @@ async function createWindowConfig(){
         minHeight:600,
         maximizable: true,
         icon: __dirname + '/src/assets/playicon.png',
+        webPreferences: {
+            nodeIntegration: false,
+            contextIsolation: true,
+            enableRemoteModule: true,
+            preload: path.join(__dirname, "./preload.js")
+        }
     })
 
     await mainWindow.loadFile('src/pages/config/index.html');
@@ -44,13 +51,28 @@ async function createWindowConfig(){
     });
 }
 
-//OnReady
-
+// OnReady
 app.whenReady().then(createWindow);
 
-// ipcMain.on('create-config', createWindowConfig())
-
+// Open Config Window
 ipcMain.handle('openConfig', async () => {
     createWindowConfig()
-    return "Foi"
 });
+
+
+// List audio files in a folder
+ipcMain.handle('loadFiles', async (channel, dir) => {
+    let files = []
+    let list = await fs.readdir(dir)
+    
+    list.forEach(element => {
+        if(path.extname(element) == (".mp3" || ".aac" || ".opus" || ".wav" || ".flac")){
+            files.push({"path": dir + "/" + element, "title": element, "dir": dir})
+        }
+    });
+
+    return files
+});
+
+
+
