@@ -75,4 +75,15 @@ ipcMain.handle('loadFiles', async (channel, dir) => {
 });
 
 
+// Read JSON file
+ipcMain.handle('readJsonFile', async (channel, path) => {
+    let file = await fs.readFile(path, 'utf8', (err, data) => {
+        if (err) throw err
+        return data
+    })
+    
+    return file
+});
+
+
 
