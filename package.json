@@ -4,7 +4,8 @@
   "description": "Um sistema de automação de rádios open source",
   "main": "main.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
