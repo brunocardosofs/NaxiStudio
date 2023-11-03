@@ -21,7 +21,7 @@ async function createWindow(){
         }
     })
 
-    await mainWindow.loadFile('src/pages/player/index.html');
+    await mainWindow.loadFile('src/windows/player/index.html');
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
@@ -44,7 +44,7 @@ async function createWindowConfig(){
         }
     })
 
-    await mainWindow.loadFile('src/pages/config/index.html');
+    await mainWindow.loadFile('src/windows/config/index.html');
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
