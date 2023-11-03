@@ -1,15 +1,28 @@
 {
   "name": "naxistudio",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "0.0.1",
+  "description": "Um sistema de automação de rádios open source",
+  "main": "main.js",
   "scripts": {
-    "tauri": "tauri"
+    "test": "test"
   },
-  "devDependencies": {
-    "@tauri-apps/cli": "^1.4.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunocardosofs/NaxiStudio.git"
   },
-  "dependencies": {
-    "@tauri-apps/api": "^1.4.0"
-  }
+  "keywords": [
+    "radio",
+    "automação",
+    "musica",
+    "comercial",
+    "vinhetas",
+    "audio",
+    "player"
+  ],
+  "author": "Bruno Cardoso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunocardosofs/NaxiStudio/issues"
+  },
+  "homepage": "https://github.com/brunocardosofs/NaxiStudio#readme"
 }
