@@ -19,7 +19,7 @@ contextBridge.exposeInMainWorld("api", {
         }
     },
 
-    files: async (channel, data) => {
-        return ipcRenderer.invoke(channel, data)
+    files: async (channel, path, data) => {
+        return ipcRenderer.invoke(channel, path, data)
     }
 });

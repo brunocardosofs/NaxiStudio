@@ -4,14 +4,15 @@ const fs = require("fs").promises
 
 var mainWindow
 
-// Create Window
+// Create Main Window
 async function createWindow(){
     mainWindow = new BrowserWindow({
         width:1000,
         height:600,
-        minWidth:800,
+        minWidth:850,
         minHeight:600,
         maximizable: true,
+        backgroundColor: "#2D3340",
         icon: path.join(__dirname, '/src/assets/playicon.png'),
         webPreferences: {
             nodeIntegration: false,
@@ -28,6 +29,7 @@ async function createWindow(){
     });
 }
 
+// Create Config Window
 async function createWindowConfig(){
     mainWindow = new BrowserWindow({
         width:800,
@@ -35,21 +37,24 @@ async function createWindowConfig(){
         minWidth:800,
         minHeight:600,
         maximizable: true,
+        backgroundColor: "#2D3340",
         icon: __dirname + '/src/assets/playicon.png',
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
             enableRemoteModule: true,
             preload: path.join(__dirname, "./preload.js")
-        }
+        },
     })
 
     await mainWindow.loadFile('src/windows/config/index.html');
 
     mainWindow.once('ready-to-show', () => {
-        mainWindow.show();
+        mainWindow.show()
     });
 }
+
+// Menu.setApplicationMenu(null)
 
 // OnReady
 app.whenReady().then(createWindow);
@@ -85,5 +90,7 @@ ipcMain.handle('readJsonFile', async (channel, path) => {
     return file
 });
 
-
-
+ipcMain.handle('writeJsonFile', async (channel, path, data) => {
+    fs.writeFile(path, data, 'utf8', (err) => console.log(err));
+    return "foi"
+});

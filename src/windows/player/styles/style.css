@@ -1,0 +1,223 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  :root {
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+  
+    --main-dark-bg: #2D3340;
+    --main-dark-color-1: #1F232C;
+    --main-dark-color-2: #191D24;
+    --yellow-color-1: #FFA60A;
+    --width-left: 60vw;
+    --width-right: calc(40vw - 30px);
+  }
+
+  body{
+    background-color: var(--main-dark-bg);
+    color: #fff;
+    overflow: hidden;
+  }
+
+  li{
+    list-style: none;
+  }
+
+/* Estilizando as classes do layout */
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.spc-btw{
+    justify-content: space-between;
+}
+
+.spc-evnl{
+    justify-content: space-evenly;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.hght-240{
+    height: 240px;
+}
+
+/* Estilizando os elementos dos Players */
+#player-media{
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#players{
+    width: var(--width-left);
+    height: 185px;
+}
+
+.player{
+    width: calc((100% / 3) - (20px / 3));
+    height: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: var(--main-dark-color-2);
+    border: 2px solid var(--main-dark-color-2);
+}
+
+/* Estilizando os elementos da Commercial Area */
+#commercial{
+    width: var(--width-right);
+    height: 240px;
+    border-radius: 10px;
+    background-color: var(--main-dark-color-2);
+}
+
+
+/* Estilizando os elementos da Tools Bar */
+#tools{
+    width: var(--width-left);
+    height: 45px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--main-dark-color-2);
+}
+
+.btn-tools{
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--yellow-color-1);
+    border-radius: 10px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+#tools .tool-box{
+    height: 35px;
+    background-color: var(--yellow-color-1);
+    border-radius: 10px;
+    border: 1px solid #000;
+    color: #000;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#tools .open-calendar{
+    width: 35px;
+    height: 35px;
+    background-image: url(../../../assets/icons/open.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    box-sizing: border-box;
+}
+
+#tools #input-calendar{
+    height: 100%;
+    font-weight: bold;
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    background-color: transparent;
+    border: none;
+}
+
+#tools .open-config{
+    background-image: url(../../../assets/icons/config.svg);
+    background-size: 80%;
+}
+
+#tools .save-playlist{
+    background-image: url(../../../assets/icons/save.svg);
+    background-size: 80%;
+}
+
+/* Estilizando os elementos da Playlist */
+#list-media{
+    padding: 0px 10px 10px 10px;
+}
+
+#playlist{
+    width: var(--width-left);
+    height: calc(100vh - 270px);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--main-dark-color-1);
+}
+
+#playlist #hours{
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    padding: 7.5px;
+    background-color: var(--main-dark-color-2);
+    border-radius: 10px;
+}
+
+#playlist #hours li{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: #000;
+    background-color: var(--yellow-color-1);
+    border: 1px solid #000;
+}
+
+#playlist #hours li.active{
+    background-color: var(--main-dark-bg);
+}
+
+#playlist #playlist-area{
+    width: 100%;
+    height: calc(100% - 55px);
+}
+
+#playlist #playlist-area #list{
+    width: calc(100% - 55px);
+    height: 100%;
+    background-color: var(--main-dark-color-2);
+    border-radius: 10px;
+}
+
+#playlist #playlist-area #playlist-tools{
+    width: 45px;
+    height: 100%;
+    background-color: var(--main-dark-color-2);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+
+/* Estilizando os elementos da Medias */
+#medias{
+    width: var(--width-right);
+    height: calc(100vh - 270px);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--main-dark-color-2);
+}
