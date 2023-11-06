@@ -14,6 +14,7 @@
     --main-dark-color-1: #1F232C;
     --main-dark-color-2: #191D24;
     --yellow-color-1: #FFA60A;
+    --yellow-color-1-hover: #FFC257;
     --width-left: 60vw;
     --width-right: calc(40vw - 30px);
   }
@@ -108,6 +109,10 @@
     box-sizing: border-box;
 }
 
+.btn-tools:hover{
+    background-color: var(--yellow-color-1-hover);
+}
+
 #tools .tool-box{
     height: 35px;
     background-color: var(--yellow-color-1);
@@ -119,14 +124,31 @@
     padding: 5px;
 }
 
+#tools .tool-box.orange{
+    background-color: #ff6500 !important;
+}
+
+#tools .tool-box.red{
+    background-color: #ff0000 !important;
+}
+
 #tools .open-calendar{
-    width: 35px;
-    height: 35px;
+    width: 28px;
+    height: 100%;
+    margin-left: 5px;
     background-image: url(../../../assets/icons/open.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
     box-sizing: border-box;
+    cursor: pointer;
+}
+
+#tools .open-calendar:hover{
+    background-color: #ffffff50
 }
 
 #tools #input-calendar{
@@ -200,6 +222,14 @@
     height: 100%;
     background-color: var(--main-dark-color-2);
     border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#playlist #playlist-area #list li{
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--main-dark-bg);
+    cursor: pointer;
 }
 
 #playlist #playlist-area #playlist-tools{

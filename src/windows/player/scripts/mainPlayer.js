@@ -1,8 +1,8 @@
 import { Click } from "./click.js"
-import Clock from "./components/Clock.js"
-import { Hours } from "./components/Hours.js"
+import Clock from "./components/clock.js"
+import { Hours } from "./components/hours.js"
 import { Player } from "./components/player.js"
-import { loadPlaylist } from "./playlist/Playlist.js"
+import { loadPlaylist } from "./playlist/playlist.js"
 
 const content = document.getElementById("content")
 
@@ -16,7 +16,7 @@ content.innerHTML = `
         </div>
         <div id="tools" class="flex-row spc-btw align-center">
             <div class="tools-content flex-row align-center">
-                <div class="tool-box flex-row align-center"><i class="open-calendar" click="open-calendar"></i><input type="date" id="input-calendar" name="input-calendar" /></div>
+                <div class="tool-box flex-row align-center" id="calendar-box"><input type="date" id="input-calendar" name="input-calendar" /><input type="button" class="open-calendar" click="open-calendar"></input></div>
                 <i class="btn-tools open-config" click="open-config"></i>
                 <i class="btn-tools save-playlist" click="save-playlist"></i>
             </div>
@@ -46,26 +46,29 @@ content.innerHTML = `
 </div>
 `
 
-document.onclick = (e) => {if(e.target.getAttribute("click") != null) Click(e.target)}
-
-var inputCalendar = document.getElementById("input-calendar")
-
-inputCalendar.onchange = (e) => loadPlaylist(e.target.value)
-
-localStorage.getItem("path-playlist")
-
-switch(localStorage.getItem("date-playlist")){
-    case "standard":
-        loadPlaylist("standard")
-        break
-    case (null || undefined):
-        break
-    default:
-        inputCalendar.value = localStorage.getItem("date-playlist")
-        loadPlaylist(localStorage.getItem("date-playlist"))
-}
-
+// Clock Events
+document.onclick = (e) => {if(e.target.getAttribute("click") != (null || undefined)) Click(e.target)}
 document.getElementById("clock").innerHTML = Clock();
 setInterval(() => {
     document.getElementById("clock").innerHTML = Clock();
 }, 1000)
+
+
+// Load Playlist Events
+
+var inputCalendar = document.getElementById("input-calendar")
+inputCalendar.value = localStorage.getItem("date-playlist")
+loadPlaylist(localStorage.getItem("date-playlist"))
+inputCalendar.addEventListener('keyup', (e) => {
+    if (e.key == "Enter") {
+        loadPlaylist(e.target.value)
+    }else if(parseInt(e.key) >= 0){
+        document.getElementById("calendar-box").classList.toggle("orange", true)
+        document.getElementById("calendar-box").classList.toggle("red", false)
+    }
+});
+
+inputCalendar.addEventListener('change', (e) => {
+    document.getElementById("calendar-box").classList.toggle("orange", true)
+    document.getElementById("calendar-box").classList.toggle("red", false)
+});

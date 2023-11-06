@@ -7,21 +7,27 @@ var playlist = document.getElementById("list")
 var file
 
 export async function loadPlaylist(date){
+    let calendarBox = document.getElementById("calendar-box")
     let path = database + `/musical/grid/${date}.json`
-    localStorage.setItem("path-playlist", path)
-    localStorage.setItem("date-playlist", date)
     await window.api.files('readJsonFile', path).then((res) => {
         grid = JSON.parse(res)
-        document.querySelectorAll(".hour")[0].classList.toggle("active", true)
         loadHourPlaylist("00")
+        localStorage.setItem("path-playlist", path)
+        localStorage.setItem("date-playlist", date)
+        calendarBox.classList.toggle("orange", false)
+        calendarBox.classList.toggle("red", false)
     })
     .catch((err) => {
-        loadPlaylist("standard")
-        document.getElementById("input-calendar").value = ""
+        //loadPlaylist("standard")
+        console.log("error:", err)
+        calendarBox.classList.toggle("orange", false)
+        calendarBox.classList.toggle("red", true)
     })
 }
 
 export async function loadHourPlaylist(hour){
+    let hourElement = document.querySelectorAll(".hour")
+
     playlist = document.getElementById("list")
     playlist.innerHTML = ""
     grid[hour].forEach((e, i) => {
@@ -33,8 +39,13 @@ export async function loadHourPlaylist(hour){
         file.classList.toggle("item-playlist", true)
         playlist.append(file)
     });
-    document.querySelector(".active").classList.toggle("active", false)
-    document.querySelectorAll(".hour")[parseInt(hour)].classList.toggle("active", true)
+    hourElement.forEach((e, i) => {
+        if(i == hour){
+            e.classList.toggle("active", true)
+        }else{
+            e.classList.toggle("active", false)
+        }
+    })
 }
 
 export function savePlaylist(){

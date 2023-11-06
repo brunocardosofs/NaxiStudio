@@ -8,8 +8,6 @@
 </head>
 <body>
     <div id="content"></div>
-    <h1>Player</h1>
-    <button id="open">Abrir</button>
     <button onclick="window.api.files('loadFiles', 'C:/Arquivos/MEDIA/MÚSICAS/Pagode').then((res) => console.log(res))">Teste</button>
     <button onclick="window.api.files('readJsonFile', 'C:/Users/bruno/OneDrive/Documentos/NaxiStudio_Database/collection/folders.json').then((res) => console.log(JSON.parse(res)))">Read</button>
     <button onclick="window.api.files('writeJsonFile', 'C:/Users/bruno/OneDrive/Documentos/NaxiStudio_Database/collection/teste.json', 'teste de salvar arquivo 54').then((res) => console.log(res))">Write</button>

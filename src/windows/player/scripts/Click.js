@@ -1,4 +1,4 @@
-import { loadHourPlaylist, savePlaylist } from "./playlist/Playlist.js"
+import { loadHourPlaylist, loadPlaylist, savePlaylist } from "./playlist/playlist.js"
 
 export function Click(e){
     switch(e.getAttribute("click")){
@@ -7,6 +7,9 @@ export function Click(e){
             break
         case "save-playlist":
             savePlaylist()
+            break
+        case "open-calendar":
+            loadPlaylist(document.getElementById("input-calendar").value)
             break
         case "hour":
             loadHourPlaylist(e.getAttribute("hour"))
