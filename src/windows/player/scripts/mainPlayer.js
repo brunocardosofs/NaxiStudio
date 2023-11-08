@@ -1,7 +1,7 @@
 import { Click } from "./click.js"
 import Clock from "./components/clock.js"
 import { Hours } from "./components/hours.js"
-import { Player } from "./components/player.js"
+import { Player, playerEvents } from "./components/player.js"
 import { loadPlaylist } from "./playlist/playlist.js"
 
 const content = document.getElementById("content")
@@ -11,8 +11,8 @@ content.innerHTML = `
     <div class="hght-240 flex-col spc-btw align-center">
         <div id="players" class="flex-row spc-btw align-center">
             ${Player(0)}
-            ${Player(0)}
-            ${Player(0)}
+            ${Player(1)}
+            ${Player(2)}
         </div>
         <div id="tools" class="flex-row spc-btw align-center">
             <div class="tools-content flex-row align-center">
@@ -46,6 +46,12 @@ content.innerHTML = `
 </div>
 `
 
+//Player Events
+playerEvents(0)
+playerEvents(1)
+playerEvents(2)
+
+
 // Clock Events
 document.onclick = (e) => {if(e.target.getAttribute("click") != (null || undefined)) Click(e.target)}
 document.getElementById("clock").innerHTML = Clock();
@@ -72,3 +78,5 @@ inputCalendar.addEventListener('change', (e) => {
     document.getElementById("calendar-box").classList.toggle("orange", true)
     document.getElementById("calendar-box").classList.toggle("red", false)
 });
+
+

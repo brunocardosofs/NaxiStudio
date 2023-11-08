@@ -22,7 +22,7 @@ export async function loadPlaylist(date){
     .catch((err) => {
         //loadPlaylist("standard")
         console.log("error:", err)
-        if (confirm(`Nenhum arquivo de programação encontrado para o dia ${date}, você deseja criar o arquivo de programação desse dia?`)) {
+        if (confirm(`Nenhum arquivo de programação encontrado para ${date}, você deseja criar o arquivo de programação desse dia?`)) {
             writePlaylistFile(path, date)
           } else {
             calendarBox.classList.toggle("orange", false)
@@ -34,7 +34,7 @@ export async function loadPlaylist(date){
 export async function writePlaylistFile(path, date){
     window.api.files('writeJsonFile', path, JSON.stringify(standardMusical)).then((res) => {
         loadPlaylist(date)
-    })
+    }).catch((err) => console.log("error", err))
 }
 
 export async function loadHourPlaylist(hour){

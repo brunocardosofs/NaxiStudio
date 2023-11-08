@@ -1,3 +1,4 @@
+import { loadPlayer } from "./components/player.js"
 import { loadHourPlaylist, loadPlaylist, savePlaylist } from "./playlist/playlist.js"
 
 export function Click(e){
@@ -6,7 +7,8 @@ export function Click(e){
             window.api.invoke('openConfig').finally(console.log("cabô"))
             break
         case "save-playlist":
-            savePlaylist()
+            //savePlaylist()
+            loadPlayer(1, "C:/Arquivos/MEDIA/MÚSICAS/Sertanejo/Marília Mendonça - Morango do Nordeste.mp3")
             break
         case "open-calendar":
             loadPlaylist(document.getElementById("input-calendar").value)

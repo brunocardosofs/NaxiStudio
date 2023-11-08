@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcMain } = require("electron")
+const { app, BrowserWindow, Menu, ipcMain, powerSaveBlocker } = require("electron")
 const path = require("node:path");
 const fs = require("fs").promises
 
@@ -54,6 +54,13 @@ async function createWindowConfig(){
     });
 }
 
+// Block the system from entering low-power (sleep) mode.
+const idPowerSaveBlocker = powerSaveBlocker.start('prevent-display-sleep')
+// console.log(powerSaveBlocker.isStarted(idPowerSaveBlocker))
+// powerSaveBlocker.stop(id)
+// console.log(powerSaveBlocker.isStarted(id))
+
+// Remove Menu
 // Menu.setApplicationMenu(null)
 
 // OnReady
