@@ -29,6 +29,10 @@
     list-style: none;
   }
 
+  input[type="button"], button{
+    outline: none;
+  }
+
 /* Estilizando as classes do layout */
 .flex-row{
     display: flex;
@@ -136,17 +140,22 @@
 }
 
 .player .infos-player .time-bar{
-    position: relative;
     width: 100%;
     height: 15px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
     overflow: hidden;
     background-color: var(--main-dark-bg);
 }
 
 .player .infos-player .time-bar .current-bar{
-    position: absolute;
+    width: 100%;
     height: 100%;
+    transform-origin: left;
     background-color: var(--yellow-color-1);
 }
 
@@ -232,6 +241,7 @@
     color: #000;
     background-color: transparent;
     border: none;
+    position: relative;
 }
 
 #tools .open-config{
@@ -323,4 +333,20 @@
     padding: 10px;
     border-radius: 10px;
     background-color: var(--main-dark-color-2);
+}
+
+
+/* Skeleton Animation */
+
+#skeleton nav {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+  
+@keyframes skeleton-loading {
+    0% {
+        background-color: #21252f;
+    }
+    100% {
+        background-color: var(--main-dark-color-2);
+    }
 }

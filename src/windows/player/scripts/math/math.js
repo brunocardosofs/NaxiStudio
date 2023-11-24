@@ -5,7 +5,7 @@ export function timeMath(data){
 
     let [s, ms] = data.toString().split('.')
 
-    ms = ms.slice(0, 2)
+    ms = (ms > 0) ? ms.slice(0, 2) : "00"
     s = parseInt(s)
     
     if(s >= 60 && s < 3600){

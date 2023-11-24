@@ -7,7 +7,26 @@
     <title>NaxiStudio Player</title>
 </head>
 <body>
-    <div id="content"></div>
+    <div id="content">
+        <div id="skeleton">
+        <div id="player-media" class="flex-row spc-btw align-center">
+            <div class="hght-240 flex-col spc-btw align-center">
+                <div id="players" class="flex-row spc-btw align-center">
+                    <nav class="player"></nav>
+                    <nav class="player"></nav>
+                    <nav class="player"></nav>
+                </div>
+                <nav id="tools" class="flex-row spc-btw align-center"></nav>
+            </div>
+            <nav id="commercial"></nav>
+        </div>
+        
+        <div id="list-media" class="flex-row spc-btw align-center">
+            <nav id="playlist" class="flex-col spc-btw align-center"></nav>
+            <nav id="medias"></nav>
+        </div>
+    </div>
+    </div>
     <button onclick="window.api.files('loadFiles', 'C:/Arquivos/MEDIA/MÚSICAS/Pagode').then((res) => console.log(res))">Teste</button>
     <button onclick="window.api.files('readJsonFile', 'C:/Users/bruno/OneDrive/Documentos/NaxiStudio_Database/collection/folders.json').then((res) => console.log(JSON.parse(res)))">Read</button>
     <button onclick="window.api.files('writeJsonFile', 'C:/Users/bruno/OneDrive/Documentos/NaxiStudio_Database/collection/teste.json', 'teste de salvar arquivo 54').then((res) => console.log(res))">Write</button>

@@ -26,7 +26,7 @@ content.innerHTML = `
         </div>
     </div>
     <div id="commercial">
-        Commercial
+        
     </div>
 </div>
 
