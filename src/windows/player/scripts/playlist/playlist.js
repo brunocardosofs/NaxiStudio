@@ -1,13 +1,13 @@
 import standardMusical from "./standards/musical.js"
 
-localStorage.setItem("path-database", "C:/Users/bruno/OneDrive/Documentos/NaxiStudio_Database")
-
 var database = localStorage.getItem("path-database")
 var grid
 
 var playlist = document.getElementById("list")
 var file
 
+
+// Load playlist
 export async function loadPlaylist(date){
     let calendarBox = document.getElementById("calendar-box")
     let path = database + `/musical/grid/${date}.json`
@@ -20,7 +20,6 @@ export async function loadPlaylist(date){
         calendarBox.classList.toggle("red", false)
     })
     .catch((err) => {
-        //loadPlaylist("standard")
         console.log("error:", err)
         if (confirm(`Nenhum arquivo de programação encontrado para ${date}, você deseja criar o arquivo de programação desse dia?`)) {
             writePlaylistFile(path, date)
@@ -42,15 +41,17 @@ export async function loadHourPlaylist(hour){
 
     playlist = document.getElementById("list")
     playlist.innerHTML = ""
-    grid[hour].forEach((e, i) => {
+    grid[hour].map((e, i) => {
         file = document.createElement("li")
         file.innerText = e[0]
         file.setAttribute("title", e[0])
-        file.setAttribute("local", e[1])
-        file.setAttribute("indice", i)
+        file.setAttribute("path", e[1])
+        file.setAttribute("click", "load-media")
+        file.setAttribute("id", i)
         file.classList.toggle("item-playlist", true)
         playlist.append(file)
     });
+
     hourElement.forEach((e, i) => {
         if(i == hour){
             e.classList.toggle("active", true)

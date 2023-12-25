@@ -3,14 +3,14 @@ import { timeMath } from "../math/math.js"
 export function Player(id){
     return `
     <div class="player flex-col spc-evnl align-center ${id}">
-        <div class="overlay off" player="${id}"></div>
+        <div class="overlay off" click="load-media-player" player="${id}"></div>
         <div class="flex-row spc-evnl align-center controls-player" player="${id}">
             <button class="btn-player btn-play" click="prog-play" player="${id}"></button>
             <button class="btn-player btn-pause" click="prog-pause" player="${id}"></button>
             <button class="btn-player btn-stop" click="prog-stop" player="${id}"></button>
         </div>
+        <span title="Teste" class="title-player">Título</span>
         <div class="infos-player flex-col align-center">
-            <span title="Teste" class="title-player">Título</span>
             <span class="time-bar"><i class="current-bar" style="transform: scaleX(0)"></i></span>
             <div class="times-player flex-row spc-btw align-center">
                 <span class="time-left">00:00:00</span>

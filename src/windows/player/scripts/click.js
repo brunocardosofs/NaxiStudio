@@ -1,4 +1,5 @@
 import { loadPlayer, playerPause, playerPlay, playerStop } from "./components/player.js"
+import { clickMediaPlaylist, loadMediaPlayer } from "./playlist/media.js"
 import { loadHourPlaylist, loadPlaylist, savePlaylist } from "./playlist/playlist.js"
 
 export function Click(e){
@@ -13,17 +14,22 @@ export function Click(e){
             playerStop(e.getAttribute("player"))
             break
         case "open-config":
-            window.api.invoke('openConfig').finally(console.log("cabô"))
+            window.api.invoke('openConfig').catch((e) => alert("Erro ao abrir configurações \n Error: " + e))
             break
         case "save-playlist":
-            //savePlaylist()
-            loadPlayer(1, "C:/Arquivos/MEDIA/MÚSICAS/Sertanejo/Marília Mendonça - Morango do Nordeste.mp3")
+            savePlaylist()
             break
         case "open-calendar":
             loadPlaylist(document.getElementById("input-calendar").value)
             break
         case "hour":
             loadHourPlaylist(e.getAttribute("hour"))
+            break
+        case "load-media":
+            clickMediaPlaylist(e)
+            break
+        case "load-media-player":
+            loadMediaPlayer(parseInt(e.getAttribute("player")))
             break
     }
 }

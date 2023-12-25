@@ -1,10 +1,17 @@
+if(localStorage.getItem("path-database") == (null || undefined)){
+    if (confirm(`O caminho da base de dados não está definido, deseja defini-lo agora?`)){
+        await openDatabase()
+    }
+}
+
+import { openDatabase } from "../../config/scripts/database/database.js"
 import { Click } from "./click.js"
 import Clock from "./components/clock.js"
 import { Hours } from "./components/hours.js"
 import { Player, playerEvents } from "./components/player.js"
 import { loadPlaylist } from "./playlist/playlist.js"
 
-const content = document.getElementById("content")
+let content = document.getElementById("content")
 
 content.innerHTML = `
 <div id="player-media" class="flex-row spc-btw align-center">
@@ -21,7 +28,7 @@ content.innerHTML = `
                 <i class="btn-tools save-playlist" click="save-playlist"></i>
             </div>
             <div class="tools-content flex-row align-center">
-                <div class="tool-box" id="clock">00/00/0000 00:00:00</div>
+                <div class="tool-box" id="clock">${Clock()}</div>
             </div>
         </div>
     </div>
@@ -51,10 +58,10 @@ playerEvents(0)
 playerEvents(1)
 playerEvents(2)
 
+// Click
+document.onclick = (e) => {if(e.target.getAttribute("click") != (null || undefined)) Click(e.target)}
 
 // Clock Events
-document.onclick = (e) => {if(e.target.getAttribute("click") != (null || undefined)) Click(e.target)}
-document.getElementById("clock").innerHTML = Clock();
 setInterval(() => {
     document.getElementById("clock").innerHTML = Clock();
 }, 1000)

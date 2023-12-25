@@ -1,0 +1,22 @@
+@import url("../../player/styles/layoutClass.css");
+
+#content{
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#side-menu{
+    width: 200px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: var(--main-dark-color-2);
+}
+
+#config-page{
+    width: calc(100% - 210px);
+    height: 100%;
+    border-radius: 10px;
+    background-color: var(--main-dark-color-2);
+}
